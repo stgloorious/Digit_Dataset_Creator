@@ -9,4 +9,6 @@ There is also a function to merge two datasets together (e.g. a dataset created 
 
 Neural Network can be found [here](https://github.com/stgloorious/OCR_Mnist_Digits)
 
+[**Doxygen Docs**](https://stgloorious.github.io/Digit_Dataset_Creator/)
+
 ![Digits](https://github.com/stgloorious/DigitDatasetCreator/blob/master/docs/digits.png)
