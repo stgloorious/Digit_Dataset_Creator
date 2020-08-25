@@ -28,6 +28,9 @@ Noise_Intensity     = 5
 # ***           *** #
 Number_of_Fonts     = 6 # only used by progress bar
 
+## Creates a dataset according to given settings
+#
+#
 def create ():
     # Prepare progress bar
     progress=0
