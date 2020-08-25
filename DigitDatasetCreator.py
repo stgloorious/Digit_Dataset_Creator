@@ -11,6 +11,7 @@ import cv2
 import os
 import csv
 import random
+from tqdm import tqdm
 
 matplotlib.pyplot.ion()
 
@@ -23,10 +24,14 @@ def displayFile (filename):
     matplotlib.pyplot.imshow(image_array,cmap='binary',interpolation=None)
 pass
 
+progress=0
+maxValue=1000*6*10
+pbar = tqdm(total=maxValue,desc="Generating digits")
+
 counter=0
 directory = os.getcwd()
 with open("dataset.csv", "ab") as f:
-    for i in range (10):
+    for i in range (1000):
         for file in os.listdir(directory + "/fonts"):
             fontname = os.fsdecode(file)
             if fontname.endswith(".ttf"):
@@ -52,14 +57,15 @@ with open("dataset.csv", "ab") as f:
                     img_data = 255.0 - new_gauss.reshape(1,28*28)
                     img_data=numpy.insert(img_data,0,str(number))
                     img_data=img_data.reshape(1,28*28+1)
-                    print(img_data)
                     numpy.savetxt(f,img_data,delimiter=",",fmt="%g")
 
                     #print("Created picture %d using font %s" %(counter, fontname))
                     counter=counter+1
+                    pbar.update()
                 pass
         pass
     pass
+pbar.close()
 print("Created %d pictures." %(counter))
 
     
